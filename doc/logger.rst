@@ -62,18 +62,18 @@ the decorator itself::
         ...
 
 
-Inserting identifiers
----------------------
+Inserting headers
+-----------------
 
 A log file quickly fills up and is usually quite dense and hard to read.  It is
-always possible to manually insert a comment as an identifier to find things at
-a later point in time with::
+always possible to manually insert a comment as a tag to find things at a later
+point in time with::
 
     import logging
-    logging.info("My header")  # manual insertion via stdlib logging module
+    logging.info("My informative tag")  # manual insertion via logging module
 
-More visually distinct identifiers are time-consuming to construct by hand
-though, which is where the `logger.log_header` function helps.  The call::
+More visually distinct tags (i.e. headers) are time-consuming to construct by
+hand though, which is where the `logger.log_header` function helps.  The call::
 
     logger.log_header("Running simulation X.Y on data Z")
 

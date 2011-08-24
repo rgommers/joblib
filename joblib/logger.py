@@ -55,6 +55,64 @@ def start(filename=None, stdout=True, verbose=1, rotating=True, numlogs=6,
     return None
 
 
+def set_format(timestyle="US", level='lower'):
+    """Set the log message format.
+
+    Parameters
+    ----------
+    timestyle : {"EU", "US"}, optional
+        The style in which the date and time information is displayed.  Default
+        is "EU", which is ...
+    level : {"upper", "lower", "short"}, optional
+        The style in which the level of the log message is displayed.
+
+    Returns
+    -------
+    None
+
+    """
+    raise NotImplementedError
+
+
+def use(loggerobj):
+    """Use a custom logger.
+
+    Parameters
+    ----------
+    loggerobj : object
+        A custom logger object.
+
+    Returns
+    -------
+    None
+
+    Notes
+    -----
+    `loggerobj` should have at least these methods: XXX
+
+    Examples
+    --------
+
+    """
+    raise NotImplementedError
+
+
+def insert_id(msg):
+    """Insert identifier message into log file.
+
+    Parameters
+    ----------
+    msg : str
+        The message to insert.
+
+    Returns
+    -------
+    None
+
+    """
+    raise NotImplementedError
+
+
 def _squeeze_time(t):
     """Remove .1s to the time under Windows: this is the time it take to
     stat files. This is needed to make results similar to timings under

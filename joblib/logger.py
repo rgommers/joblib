@@ -17,8 +17,8 @@ import logging
 import pprint
 
 
-def start(filename=None, stdout=True, verbose=1, rotating=True, numlogs=6,
-          maxfilesize=10):
+def set_log_options(filename=None, stdout=True, verbose=1, rotating=True,
+                    numlogs=6, maxfilesize=10):
     """Start joblib logging.
 
     Parameters
@@ -55,7 +55,17 @@ def start(filename=None, stdout=True, verbose=1, rotating=True, numlogs=6,
     return None
 
 
-def set_format(timestyle="US", level='lower'):
+def get_log_options():
+    """Get the current logging options.
+
+    These are either the defaults, or the ones set by a call to
+    `set_log_options`.
+
+    """
+    raise NotImplementedError
+
+
+def set_log_format(timestyle="US", level='lower'):
     """Set the log message format.
 
     Parameters
@@ -74,7 +84,7 @@ def set_format(timestyle="US", level='lower'):
     raise NotImplementedError
 
 
-def use(loggerobj):
+def set_default_logger(loggerobj):
     """Use a custom logger.
 
     Parameters
@@ -97,13 +107,23 @@ def use(loggerobj):
     raise NotImplementedError
 
 
-def insert_id(msg):
+def log_header(msg):
     """Insert identifier message into log file.
 
     Parameters
     ----------
     msg : str
         The message to insert.
+    top_char : str, optional
+        Character to use to form the top line of the header.  Default is '_'.
+    bottom_char : str, optional
+        Character to use to form the bottom line of the header.
+        Default is '_'.
+    bottom_tag : str, optional
+        The tag (string) to use on the closing line of the header.
+        Default is None, which means using the name of the module from which
+        the `log_header` call was made.
+        To not use any tag, use ``bottom_tag == ''``.
 
     Returns
     -------

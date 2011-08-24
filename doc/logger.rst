@@ -23,10 +23,15 @@ Rotating logs are used when logging to a file, which means that when a file
 reaches its size limit (default is 10 kb) it is renamed from "<filename.log>"
 to "<filename.log.1>" and new messages are written to a new "<filename.log>".
 Up to six log files are used before old information gets overwritten.  These
-settings can be controlled like:
+settings can be controlled like::
 
     from joblib import logger
     logger.start(filename='example.log', rotating=True, numlogs=25)
+
+.. note:: The ``logger.start()`` interface is designed to be as simple as
+          possible to use.  Users familiar with the `logging` module from the
+          Python standard library can use its interface instead if preferred. 
+          For documentation we refer to XXX:link.
 
 
 Controlling formatting
@@ -56,6 +61,28 @@ the decorator itself::
         ...
 
 
+Inserting identifiers
+---------------------
+
+A log file quickly fills up and is usually quite dense and hard to read.  It is
+always possible to manually insert a comment as an identifier to find things at
+a later point in time with::
+
+    import logging
+    logging.info("My identifier")
+
+More visually distinct identifiers are time-consuming to construct by hand
+though, which is where the `logger.insert_id` function helps.  The call
+``logger.insert_id("Running simulation X.Y on data Z")`` shows up in the log
+file (with blank lines above and below) as::
+
+    -----------------------------------------------------------------
+        Running simulation X.Y on data Z
+        Time: 15:51:00
+        Date: 24/08/2011
+    =================================================================
+
+
 Custom loggers
 --------------
 
@@ -79,4 +106,3 @@ The joblib logging is based on the ``logging`` module from the Python standard
 library.  This means that integrating the joblib logging with logging from
 Python itself and from other libraries or end user code is straightforward.
 ...
-

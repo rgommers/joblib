@@ -42,7 +42,7 @@ def set_log_options(filename=None, stdout=INFO, verbose=INFO, rotating=True,
         (= 40).  Set to 0 for a completely silent stdout.
     verbose : int, optional
         The logging verbosity.  All messages with a log level <= `verbose` will
-        be logged.  The default is INFO (= 40).
+        be logged.  The default is INFO (= 40).  See Notes for more details.
     rotating: bool, optional
         If True (default), use `numlogs` number of rotating logs when logging
         to file.
@@ -54,6 +54,22 @@ def set_log_options(filename=None, stdout=INFO, verbose=INFO, rotating=True,
     Returns
     -------
     None
+
+    Notes
+    -----
+    The definition of the verbosity integers (= log levels) is as follows::
+
+      -  0 :          : No output - complete quiet.
+      - 10 : CRITICAL : Serious error, program may be unable to continue.
+      - 20 : ERROR : The software has not been able to perform some function.
+      - 30 : WARNING : 	Indication that something unexpected happened.
+      - 40 : INFO : Confirmation that things are working as expected.
+      - 50 : DEBUG : Detailed information, typically used for debugging.
+
+    Note that the log levels in the Python standard library module `logging`
+    are the opposite (``logging.DEBUG == 10``, ``logging.CRITICAL == 50``).
+    This definition was chosen to ensure that 0 means no output at all, and
+    a higher verbose integer means more detailed output.
 
     Examples
     --------

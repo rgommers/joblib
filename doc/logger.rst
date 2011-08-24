@@ -17,7 +17,7 @@ example, to log to a file, disable printing to screen and log all messages with
 level "debug" or higher, use::
 
     from joblib import logger
-    logger.start(filename='example.log', stdout=False, verbose=10)
+    logger.start(filename='example.log', stdout=False, verbose='debug')
 
 Rotating logs are used when logging to a file, which means that when a file
 reaches its size limit (default is 10 kb) it is renamed from "<filename.log>"

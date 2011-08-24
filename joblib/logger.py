@@ -30,8 +30,9 @@ def start(filename=None, stdout=True, verbose=1, rotating=True, numlogs=6,
         (``os.environ["HOME"]``).
     stdout : bool, optional
         Whether or not to log to stdout.  Default is True.
-    verbose : int, optional
-        The logging verbosity.  XXX: describe levels
+    verbose : str or int, optional
+        The logging verbosity.  If a string, should be one of {"debug", "info",
+        "warning", "error", "critical"}.  If an integer, XXX: complete.
     rotating: bool, optional
         If True (default), use `numlogs` number of rotating logs when logging
         to file.

@@ -17,6 +17,43 @@ import logging
 import pprint
 
 
+def start(filename=None, stdout=True, verbose=1, rotating=True, numlogs=6,
+          maxfilesize=10):
+    """Start joblib logging.
+
+    Parameters
+    ----------
+    filename : str or file-like object, optional
+        The file to which to log.  If not given, logging happens only to stdout
+        (if `stdout` is True).  If `filename` is a string starting with "~",
+        this character is expanded to the current HOME directory
+        (``os.environ["HOME"]``).
+    stdout : bool, optional
+        Whether or not to log to stdout.  Default is True.
+    verbose : int, optional
+        The logging verbosity.  XXX: describe levels
+    rotating: bool, optional
+        If True (default), use `numlogs` number of rotating logs when logging
+        to file.
+    numlogs : int, optional
+        The maximum number of rotating log files.  Default is 6.
+    maxfilesize : int, optional
+        The maximum file size for a single log file in kb.  Default is 10.
+
+    Returns
+    -------
+    None
+
+    Examples
+    --------
+
+    """
+    if isinstance(filename, basestring) and filename.startswith('~'):
+        filename.replace('~', os.environ["HOME"], 1)
+
+    return None
+
+
 def _squeeze_time(t):
     """Remove .1s to the time under Windows: this is the time it take to
     stat files. This is needed to make results similar to timings under

@@ -46,6 +46,7 @@ User manual
     installing.rst
     memory.rst
     parallel.rst
+    logger.rst
     developing.rst
 
 Module reference

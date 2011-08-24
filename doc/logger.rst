@@ -20,8 +20,6 @@ with level "debug" or higher, use::
     logger.set_log_options(filename='example.log', stdout=logger.INFO,
                            verbose=logger.INFO)
 
-map logger.XXX --> logging.XXX
-
 Rotating logs are used when logging to a file, which means that when a file
 reaches its size limit (default is 10 kb) it is renamed from "<filename.log>"
 to "<filename.log.1>" and new messages are written to a new "<filename.log>".

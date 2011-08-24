@@ -17,9 +17,18 @@ import logging
 import pprint
 
 
-def set_log_options(filename=None, stdout=True, verbose=1, rotating=True,
+# Define mapping between log level constants from stdlib logging module and
+# this module.  We want higher level to mean more verbose.
+DEBUG = logging.CRITICAL  # 50
+INFO = logging.ERROR  # 40
+WARNING = logging.WARNING  # 30
+ERROR = logging.INFO  # 20
+CRITICAL = logging.DEBUG  #10
+
+
+def set_log_options(filename=None, stdout=INFO, verbose=INFO, rotating=True,
                     numlogs=6, maxfilesize=10):
-    """Start joblib logging.
+    """Set joblib logging options.
 
     Parameters
     ----------
@@ -28,11 +37,12 @@ def set_log_options(filename=None, stdout=True, verbose=1, rotating=True,
         (if `stdout` is True).  If `filename` is a string starting with "~",
         this character is expanded to the current HOME directory
         (``os.environ["HOME"]``).
-    stdout : bool, optional
-        Whether or not to log to stdout.  Default is True.
-    verbose : str or int, optional
-        The logging verbosity.  If a string, should be one of {"debug", "info",
-        "warning", "error", "critical"}.  If an integer, XXX: complete.
+    stdout : int, optional
+        The verbosity for displaying log messages on stdout.  Default is INFO
+        (= 40).  Set to 0 for a completely silent stdout.
+    verbose : int, optional
+        The logging verbosity.  All messages with a log level <= `verbose` will
+        be logged.  The default is INFO (= 40).
     rotating: bool, optional
         If True (default), use `numlogs` number of rotating logs when logging
         to file.

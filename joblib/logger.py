@@ -25,6 +25,8 @@ WARNING = logging.WARNING  # 30
 ERROR = logging.INFO  # 20
 CRITICAL = logging.DEBUG  #10
 
+PROGRESS = 45  # level for progress reporting, in between DEBUG and INFO
+
 
 def set_log_options(filename=None, stdout=INFO, verbose=INFO, rotating=True,
                     numlogs=6, maxfilesize=10):

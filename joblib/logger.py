@@ -64,8 +64,9 @@ def set_log_options(filename=None, stdout=INFO, verbose=INFO, rotating=True,
       -  0 :          : No output - complete quiet.
       - 10 : CRITICAL : Serious error, program may be unable to continue.
       - 20 : ERROR : The software has not been able to perform some function.
-      - 30 : WARNING : 	Indication that something unexpected happened.
+      - 30 : WARNING : Indication that something unexpected happened.
       - 40 : INFO : Confirmation that things are working as expected.
+      - 45 : PROGRESS : Progress reporting.
       - 50 : DEBUG : Detailed information, typically used for debugging.
 
     Note that the log levels in the Python standard library module `logging`
